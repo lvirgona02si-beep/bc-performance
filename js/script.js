@@ -148,6 +148,18 @@ const results = {
   annualExtra: document.getElementById('resAnnualExtra'),
 };
 
+// Weekly total from the comparison table ($45 + $9 + $6.92)
+const SEPARATE_WEEKLY_COST = 60.92;
+
+const fmtCents = (n) =>
+  '$' + n.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+const compare = {
+  addonPrice: document.getElementById('cmpAddonPrice'),
+  weeklySave: document.getElementById('cmpWeeklySave'),
+  annualSave: document.getElementById('cmpAnnualSave'),
+};
+
 function calculate() {
   const members = Number(inputs.members.value);
   const addonPrice = Number(inputs.addonPrice.value);
@@ -160,6 +172,12 @@ function calculate() {
 
   results.weeklyExtra.textContent = fmt(weeklyExtra);
   results.annualExtra.textContent = fmt(annualExtra);
+
+  // Price comparison vs buying the same support separately
+  const weeklySave = SEPARATE_WEEKLY_COST - addonPrice;
+  compare.addonPrice.textContent = fmtCents(addonPrice);
+  compare.weeklySave.textContent = fmtCents(weeklySave);
+  compare.annualSave.textContent = fmt(weeklySave * 52);
 }
 
 Object.values(inputs).forEach((input) => {

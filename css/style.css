@@ -410,12 +410,30 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Benefits ---------- */
+/* Flex wrap (not grid) so a short last row sits centred */
 .benefits-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   max-width: 980px;
   margin: 0 auto;
+}
+
+.benefit-card {
+  flex: 0 0 calc((100% - 40px) / 3);
+}
+
+@media (max-width: 900px) {
+  .benefit-card {
+    flex-basis: calc((100% - 20px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .benefit-card {
+    flex-basis: 100%;
+  }
 }
 
 .benefit-card {
@@ -568,6 +586,163 @@ h1, h2, h3, h4 {
   color: var(--off-white);
 }
 
+/* ---------- Price comparison ---------- */
+.compare {
+  margin-top: 56px;
+}
+
+.compare-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 28px;
+}
+
+.compare-head h3 {
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  margin-bottom: 10px;
+}
+
+.compare-head p {
+  color: var(--muted);
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.compare-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.compare-card-bc {
+  border-color: var(--purple);
+  display: flex;
+  flex-direction: column;
+}
+
+.compare-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.compare-card-bc .compare-tag {
+  color: var(--purple-light);
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compare-table th,
+.compare-table td {
+  text-align: left;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.compare-table th:last-child,
+.compare-table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+  padding-left: 16px;
+}
+
+.compare-table thead th {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  padding-top: 0;
+}
+
+.compare-table tbody td {
+  color: var(--off-white);
+}
+
+.compare-note {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.compare-table tfoot th,
+.compare-table tfoot td {
+  border-bottom: none;
+  padding-bottom: 0;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.compare-table tfoot td {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1.3rem;
+}
+
+.compare-price {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  line-height: 1;
+  color: var(--purple-light);
+}
+
+.compare-price small {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.compare-sub {
+  color: var(--off-white);
+  margin: 14px 0 24px;
+  font-size: 0.96rem;
+}
+
+.compare-savings {
+  margin-top: auto;
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.compare-savings div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.compare-savings .r-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.compare-savings .r-value {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1.3rem;
+  color: var(--white);
+  white-space: nowrap;
+}
+
 /* ---------- Testimonials ---------- */
 .testimonial-grid {
   display: grid;
@@ -608,6 +783,27 @@ h1, h2, h3, h4 {
 }
 
 .credibility-copy p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ---------- Mission ---------- */
+.mission .section-head {
+  margin-bottom: 32px;
+}
+
+.mission-copy {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mission-copy p {
+  color: var(--off-white);
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+}
+
+.mission-copy p:last-child {
   margin-bottom: 0;
 }
 
@@ -946,6 +1142,7 @@ footer {
     border-bottom: none;
   }
   .calculator,
+  .compare-grid,
   .split-grid,
   .credibility,
   .testimonial-grid,
@@ -963,6 +1160,10 @@ footer {
 }
 
 @media (max-width: 560px) {
+  .calculator,
+  .compare-card {
+    padding: 24px 20px;
+  }
   .hero-actions {
     flex-direction: column;
   }
