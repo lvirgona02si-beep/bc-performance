@@ -786,6 +786,48 @@ h1, h2, h3, h4 {
   margin-bottom: 0;
 }
 
+.accolades {
+  margin-top: 28px;
+  padding: 24px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.accolades h3 {
+  font-size: 1.05rem;
+  color: var(--purple-light);
+  margin-bottom: 16px;
+}
+
+.accolades ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 24px;
+}
+
+.accolades li {
+  position: relative;
+  padding-left: 26px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--white);
+}
+
+.accolades li::before {
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  color: var(--purple-light);
+}
+
+@media (max-width: 560px) {
+  .accolades ul {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Mission ---------- */
 .mission .section-head {
   margin-bottom: 32px;
