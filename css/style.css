@@ -366,7 +366,7 @@ h1, h2, h3, h4 {
 .phone-video video {
   display: block;
   width: 100%;
-  aspect-ratio: 648 / 1280;
+  aspect-ratio: 648 / 1300;
   object-fit: cover;
 }
 
